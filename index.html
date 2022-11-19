@@ -1,1 +1,31 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>ceshi</title><link href=/static/css/app.e82354bb7eb067ec32998fb6ae87b3ee.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.2ae2e69a05c33dfc65f8.js></script><script type=text/javascript src=/static/js/vendor.7a0066d4f36f1097071e.js></script><script type=text/javascript src=/static/js/app.49768321608c338aa834.js></script></body></html>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>李金豆二维码</title>
+</head>
+<body>
+	 <div>
+      <audio controls="controls" id="audio"> 
+    <source src="./11.mp3" type="audio/mp3"></source>
+    <source src="./11.mp3" type="audio/mp3"></source>
+		</audio>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	(function(){
+		//微信下兼容处理
+		var audio = document.getElementById('audio');
+            audio.play();
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.play();
+        }, false);
+        document.addEventListener('touchstart', function () {
+    function audioAutoPlay() {
+        var audio = document.getElementById('audio');
+            audio.play();
+    }
+    audioAutoPlay();
+});
+	})()
+</script>
