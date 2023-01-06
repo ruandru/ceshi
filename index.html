@@ -2,30 +2,84 @@
 <html>
 <head>
 	<title>李金豆二维码</title>
+    <style>
+        *{
+            margin:0;
+            padding:0
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+            background-color: #5278b6;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        .Imgbox{
+            width: 1280px;
+            height: 860px;
+            position: relative;
+        }
+        .Imgbox >img{
+            width: 100%;
+            height:100%
+        }
+        .Imgbox .audioStyle{
+            width: 500px;
+            height: 200px;
+            border-radius: 300px;
+            position: absolute;
+            top:230px;
+            right:0;
+        }
+    </style>
 </head>
 <body>
-	 <div>
-      <audio controls="controls" id="audio"> 
-    <source src="./static/11.mp3" type="audio/mp3"></source>
-    <source src="./static/11.mp3" type="audio/mp3"></source>
-		</audio>
-	</div>
+    <div class="Imgbox">
+        <div class="audioControl" style="opacity: 0;">
+            <audio controls="controls" id="audio" muted> 
+                  <source src="./static/11.mp3" type="audio/mp3"></source>
+                  <source src="./static/11.mp3" type="audio/mp3"></source>
+            </audio>
+          </div>
+        <img src="./static/aoteman.jpg" alt="">
+        <div class="audioStyle" onclick="audioPlay()" id="btnAudio"></div>
+    </div>
+	
 </body>
 </html>
 <script type="text/javascript">
 	(function(){
-		//微信下兼容处理
-		var audio = document.getElementById('audio');
+        audioPlay()
+        // 兼容IE
+		    if(document.all) {
+                document.getElementById('btnAudio').click()
+		    }
+		    // 兼容其它浏览器
+		    else {
+		        var e = document.createEvent("MouseEvents");
+		        e.initEvent("click", true, true);
+		        document.getElementById("btnAudio").dispatchEvent(e);
+		    }
+       
+	})()
+    function audioPlay(){
+        var audio = document.getElementById('audio');
+            audio.muted = false;
             audio.play();
         document.addEventListener("WeixinJSBridgeReady", function () {
+            audio.muted = false;
             audio.play();
         }, false);
         document.addEventListener('touchstart', function () {
-    function audioAutoPlay() {
-        var audio = document.getElementById('audio');
-            audio.play();
+        function audioAutoPlay() {
+            var audio = document.getElementById('audio');
+                audio.muted = false;
+                audio.play();
+        }
+        audioAutoPlay();
+      });
     }
-    audioAutoPlay();
-});
-	})()
 </script>
